@@ -6,4 +6,4 @@ while static_count < count:
         print(my_list[static_count])
         static_count = static_count + 1
     else:
-        break
+        static_count = static_count + 1
