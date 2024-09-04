@@ -15,13 +15,11 @@ def calculate_structure_sum(list_):
         elif isinstance(list_[i], int):
             sum_all += int(list_[i])
         elif isinstance(list_[i], dict):
-            list_list = [*list_[i].items()]
-            calculate_structure_sum(list_list)
+            calculate_structure_sum([*list_[i].items()])
         elif isinstance(list_[i], list) or isinstance(list_[i], tuple):
             calculate_structure_sum(list_[i])
         elif isinstance(list_[i], set):
-            list_in_list = [*list_[i]]
-            calculate_structure_sum(list_in_list)
+            calculate_structure_sum([*list_[i]])
     return sum_all
 
 
