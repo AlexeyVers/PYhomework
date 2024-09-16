@@ -67,7 +67,7 @@ class Video:
         if UrTube.current_user:
             for video in vish_list:
                 if title.lower() == video[0].lower():
-                    if video[2]:
+                    if video[2]: # Проверка adult_mode
                         if UrTube.current_user[2] >= 18:
                               while quantity < video[1]:
                                   sleep(1)
