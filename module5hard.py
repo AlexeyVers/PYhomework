@@ -64,26 +64,24 @@ class Video:
     def watch_video(title):
         vish_list = Video.get_video(title)
         quantity = 0
-        for name in vish_list:
-            if title.lower() == name[0].lower():
-                if name[3] and not bool(UrTube.current_user):
-                    print('Вы не указали возраст при регестрации, видео недоступно')
-                    break
-                elif UrTube.current_user:
-                          if UrTube.current_user[2] >= 18:
-                              while quantity < name[1]:
+        if UrTube.current_user:
+            for video in vish_list:
+                if title.lower() == video[0].lower():
+                    if video[2]:
+                        if UrTube.current_user[2] >= 18:
+                              while quantity < video[1]:
                                   sleep(1)
                                   quantity += 1
                                   print(quantity)
-                elif not name[3]:
-                    while quantity < name[1]:
-                        sleep(1)
-                        quantity += 1
-                        print(quantity)
-                else:
-                    print('Вым рано такое смотреть')
+                        else:
+                            print('Вым рано такое смотреть')
+                    else:
+                        while quantity < video[1]:
+                            sleep(1)
+                            quantity += 1
+                            print(quantity)
             else:
-                print('Нет такого видео')
+                print('Войдите в аккаунт чтобы смотреть видео')
 
 
 class UrTube:
