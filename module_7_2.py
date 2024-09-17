@@ -4,10 +4,8 @@ def custom_write(file_name, strings):
     strings_positions = {}
     write_ = open(file_name, 'a', encoding='utf-8')
     for i in range(len(strings)):
-        _num = i + 1
-        num_stroke = write_.tell()
-        strings_positions[(_num, num_stroke)] = strings[i]
-        pprint(write_.write(f'{strings[i]}\n'))
+        write_.write(f'{strings[i]}\n')
+        strings_positions[(i + 1, write_.tell())] = strings[i]
     write_.close()
     return strings_positions
 
