@@ -1,8 +1,8 @@
 def apply_all_func(int_list, *functions):
     results = {}
     for function in functions:
-        result = map(function, int_list)
-        results[function.__name__] = list(result)
+        result = function(int_list)
+        results[function.__name__] = result
     return results
 
 
