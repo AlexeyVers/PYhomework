@@ -1,3 +1,6 @@
+import inspect
+
+
 def introspection_info(obj):
     obj_inf = {'type': str(), 'atributs': [], 'metods': [], 'modul': str()}
     obj_inf['type'] = (str(type(obj))).split('\'')[1]
@@ -6,7 +9,7 @@ def introspection_info(obj):
             obj_inf['atributs'].append(dir(obj)[i])
         if getattr(obj, dir(obj)[i]):
             obj_inf['metods'].append(dir(obj)[i])
-    obj_inf['modul'] = __name__
+    obj_inf['modul'] = inspect.getmodule(introspection_info)
 
     return obj_inf
 
