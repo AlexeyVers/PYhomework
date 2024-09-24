@@ -1,0 +1,14 @@
+def introspection_info(obj):
+    obj_inf = {'type': str(), 'atributs': [], 'metods': [], 'modul': str()}
+    obj_inf['type'] = (str(type(obj))).split('\'')[1]
+    for i in range(len(dir(obj))):
+        if hasattr(obj, dir(obj)[i]):
+            obj_inf['atributs'].append(dir(obj)[i])
+        if getattr(obj, dir(obj)[i]):
+            obj_inf['metods'].append(dir(obj)[i])
+    obj_inf['modul'] = __name__
+
+    return obj_inf
+
+number_info = introspection_info(42)
+print(number_info)
